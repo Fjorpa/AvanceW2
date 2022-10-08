@@ -1,0 +1,38 @@
+
+
+.CantAAL{
+    color: brown;
+}
+
+.columna{
+    background-color: wheat;
+    border-color: rgb(214, 87, 87);
+    border-radius: 5px;
+}
+
+.Title{
+    text-align: center;
+    color: black;
+}
+.yearTitle{
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    padding: 2.5px;
+    padding-left: 5px;
+}
+
+.barGraphTitle{
+    background-color: deepskyblue;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    padding: 2.5px;
+    padding-left: 5px;
+}
+
+.btnGroup{
+    margin-top: -15px;
+    margin-bottom: -7px;
+}
