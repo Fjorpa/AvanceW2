@@ -73,7 +73,37 @@ crossorigin="anonymous"></script>
       </div>
     </div>
 </div>
-
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div class="customDividerN">
+                <div class="card">
+                    <h6 class="yearTitle">GRADO</h6>
+                        <div class="card-body btnGroup">
+                            <button class="btn btn-outline-dark gradeBtn" type="button" id="primaria">PRIMARIA</button>
+                            <button class="btn btn-outline-dark gradeBtn" type="button" id="secundaria">SECUNDARIA</button>
+                        </div> 
+                </div>
+            </div>
+        </div> 
+        <div class="col-12">
+            <div class="custom">
+                <div class="card">
+                    <h6 class="multibarGraphTitle">CANTIDAD DE NOTAS DE ALUMNOS POR ÁREA (PRIMARIA)</h6>
+                    <div class="card-body">
+                      <canvas id="myChart" height="100px"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h6 class="multibarGraphTitleSec">CANTIDAD DE NOTAS DE ALUMNOS POR ÁREA (SECUNDARIA)</h6>
+                <div class="card-body">
+                    <canvas id="chartSec" height="100px"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <script>
     let colorHex = ['#118dff', '#12239e', '#e66c37', '#6b007b'];
@@ -160,8 +190,8 @@ crossorigin="anonymous"></script>
     });
 </script>
 <script>
-    const ctx = document.getElementById('barchart').getContext('2d');
-    const chart = new Chart(ctx, {
+    const ctx3 = document.getElementById('barchart').getContext('2d');
+    const chart = new Chart(ctx3, {
         type: 'bar',
         data: {
             labels: [['PRIMER', 'GRADO'],['SEGUNDO', 'GRADO'],['TERCER', 'GRADO'],['CUARTO', 'GRADO'],['QUINTO', 'GRADO'],['SEXTO', 'GRADO'],
@@ -345,5 +375,120 @@ crossorigin="anonymous"></script>
         chart.update();
     });
     </script>
-
+     <script>
+        const ctx2 = document.getElementById('myChart');
+        const multibarchart = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Arte y Cultura', 'Castellano como segunda lengua', 'Ciencia y Tecnología', 'Comunicación', 'Ed. Física', 'Ed. Religiosa', 'Ingles', 'Matemática', 'Personal Social'],
+                datasets: [{
+                    label: 'C',
+                    data: [3,7,5,5,4,4,9,14,6],
+                    backgroundColor: [
+                        '#118dff'
+                    ]
+                },{
+                    label: 'B',
+                    data: [22,24,28,31,20,22,32,40,31],
+                    backgroundColor: [
+                        '#12239e'
+                    ]
+                },{
+                    label: 'A',
+                    data: [46,54,51,53,51,51,52,53,54],
+                    backgroundColor: [
+                        '#e66c37'
+                    ]
+                },{
+                    label: 'AD',
+                    data: [24,16,8,14,22,16,19,12,13],
+                    backgroundColor: [
+                        '#6b007b'
+                    ]
+                }]
+            },
+            plugins: [ChartDataLabels],
+            options: {
+                scales: {
+                    y: {
+                        title:{
+                            display: true, 
+                            text: 'CANTIDAD DE ALUMNOS'
+                        }
+                    }
+                }, 
+                plugins:{
+                    legend:{
+                        position: 'top',
+                        title:{
+                            display: true,
+                            text: 'Nota'
+                        }
+                    },
+                    datalabels:{
+                        anchor: 'end',
+                        align: 'top'
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        const ctx1 = document.getElementById('chartSec').getContext('2d');
+        const multibarchartSec = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Arte y Cultura', 'Castellano como segunda lengua', 'Ciencia y Tecnología', 'Ciencias Sociales', 'Comunicación', 'Desarrollo Personal', 'Ed. Fisica', 'Ed. P. Trabajao', 'Ed. Religiosa', 'Ingles', 'Matemática'],
+                datasets: [{
+                    label: 'C',
+                    data: [4,5,8,4,8,2,7,3,4,5,10],
+                    backgroundColor: [
+                        '#118dff'
+                    ]
+                },{
+                    label: 'B',
+                    data: [19,23,21,22,28,21,20,16,19,26,29],
+                    backgroundColor: [
+                        '#12239e'
+                    ]
+                },{
+                    label: 'A',
+                    data: [43,47,47,43,46,44,43,44,45,46,45],
+                    backgroundColor: [
+                        '#e66c37'
+                    ]
+                },{
+                    label: 'AD',
+                    data: [13,14,10,11,10,9,22,10,16,15,11],
+                    backgroundColor: [
+                        '#6b007b'
+                    ]
+                }]
+            },
+            plugins: [ChartDataLabels],
+            options: {
+                scales: {
+                    y: {
+                        title:{
+                            display: true, 
+                            text: 'CANTIDAD DE ALUMNOS'
+                        }
+                    }
+                }, 
+                plugins:{
+                    legend:{
+                        position: 'top',
+                        title:{
+                            display: true,
+                            text: 'Nota'
+                        }
+                    },
+                    datalabels:{
+                        anchor: 'end',
+                        align: 'top'
+                    }
+                }
+            }
+        });
+    </script>
 </html>
