@@ -33,6 +33,25 @@
 }
 
 .btnGroup{
-    margin-top: -15px;
+    margin-top: -17px;
     margin-bottom: -7px;
+   text-align: center;
+}
+
+.customDivider{
+    margin-bottom: 10px;
+}
+
+.noteBtn{
+    width: 115px;
+    padding: 50px;
+    margin-top: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+.yearBtn{
+    width: 75px;
+    margin-top: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
 }
