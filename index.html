@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="reportes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.1.0/dist/chartjs-plugin-datalabels.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-
@@ -27,13 +29,13 @@ crossorigin="anonymous"></script>
         <div class="card">
             <h6 class="barGraphTitle">CANTIDAD DE ALUMNOS POR AÑO LECTIVO</h6>
             <div class="card-body">
-              <canvas id="barchart" height="300px"></canvas> 
+              <canvas id="barchart" height="275px"></canvas> 
             </div>
           </div>
           
       </div>
 
-      <div class="col">
+      <div class="col col-sm-5">
         <div class="customDivider">
             <div class="card">
                 <h6 class="yearTitle">AÑO</h6>
@@ -44,25 +46,28 @@ crossorigin="anonymous"></script>
                             <button class="btn btn-outline-dark yearBtn" type="button" id="2019Btn">2019</button>
                             <button class="btn btn-outline-dark yearBtn" type="button"id="2020Btn">2020</button>
                             <button class="btn btn-outline-dark yearBtn" type="button"id="2021Btn">2021</button>
-                            <button class="btn btn-outline-dark yearBtn" type="button"id="AllBtn">All</button>
+                            <button class="btn btn-outline-dark yearBtn allYearBtn" type="button"id="AllBtn">All</button>
                     </div> 
             </div>
             <div>
         </div>
         </div>
-        <div class="card">
-            <h6 class="yearTitle">NOTA</h6>
-                <div class="card-body btnGroup">
-                        <button class="btn btn-outline-dark noteBtn" type="button" id="CBtn">C</button>
-                        <button class="btn btn-outline-dark noteBtn" type="button" id="BBtn">B</button>
-                        <button class="btn btn-outline-dark noteBtn" type="button" id="ABtn">A</button>
-                        <button class="btn btn-outline-dark noteBtn" type="button" id="ADBtn">AD</button> 
-                </div> 
+        <div class="customDivider">
+            <div class="card">
+                <h6 class="yearTitle">NOTA</h6>
+                    <div class="card-body btnGroup">
+                            <button class="btn btn-outline-dark noteBtn" type="button" id="CBtn">C</button>
+                            <button class="btn btn-outline-dark noteBtn" type="button" id="BBtn">B</button>
+                            <button class="btn btn-outline-dark noteBtn" type="button" id="ABtn">A</button>
+                            <button class="btn btn-outline-dark noteBtn" type="button" id="ADBtn">AD</button> 
+                    </div> 
+            </div>
         </div>
+        
         <div class="card">
             <h6 class="notasTitle">CANTIDAD DE ALUMNOS POR NOTAS</h6>
                 <div class="card-body">                   
-                    <canvas id="myChart" height="400px"></canvas>
+                    <canvas id="pieChart" class="pieChart"></canvas>
                 </div>  
         </div>
       </div>
@@ -110,17 +115,18 @@ crossorigin="anonymous"></script>
         }
     };
     const myChart = new Chart( 
-        document.getElementById('myChart').getContext('2d'), config
+        document.getElementById('pieChart').getContext('2d'), config
     );
     document.getElementById("CBtn").addEventListener("click", () => {
         const {
             type
         } = myChart.config;
+        
         myChart.reset();
         myChart.toggleDataVisibility(1);
         myChart.toggleDataVisibility(2);
         myChart.toggleDataVisibility(3);
-        myChart.update();
+        myChart.update(); 
     });
     document.getElementById("BBtn").addEventListener("click", () => {
         const {
@@ -339,4 +345,5 @@ crossorigin="anonymous"></script>
         chart.update();
     });
     </script>
+
 </html>

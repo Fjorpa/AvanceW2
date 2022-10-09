@@ -42,7 +42,7 @@
 .btnGroup{
     margin-top: -17px;
     margin-bottom: -7px;
-   text-align: justify;
+   text-align: center;
 }
 
 .customDivider{
@@ -62,4 +62,11 @@
     margin-bottom: 4px;
     margin-left: 1px;
     margin-right: 1px;
+}
+.allYearBtn{
+    text-align: left;
+}
+.pieChart{
+    margin-top: -45px;
+    margin-bottom: -40px;
 }
