@@ -53,18 +53,106 @@ crossorigin="anonymous"></script>
         <div class="card">
             <h6 class="yearTitle">NOTA</h6>
                 <div class="card-body btnGroup">
-                        <button class="btn btn-outline-dark noteBtn" type="button">C</button>
-                        <button class="btn btn-outline-dark noteBtn" type="button">B</button>
-                        <button class="btn btn-outline-dark noteBtn" type="button">A</button>
-                        <button class="btn btn-outline-dark noteBtn" type="button">AD</button> 
+                        <button class="btn btn-outline-dark noteBtn" type="button" id="CBtn">C</button>
+                        <button class="btn btn-outline-dark noteBtn" type="button" id="BBtn">B</button>
+                        <button class="btn btn-outline-dark noteBtn" type="button" id="ABtn">A</button>
+                        <button class="btn btn-outline-dark noteBtn" type="button" id="ADBtn">AD</button> 
                 </div> 
+        </div>
+        <div class="card">
+            <h6 class="notasTitle">CANTIDAD DE ALUMNOS POR NOTAS</h6>
+                <div class="card-body">                   
+                    <canvas id="myChart" height="400px"></canvas>
+                </div>  
         </div>
       </div>
     </div>
 </div>
 
-
 </body>
+<script>
+    let colorHex = ['#118dff', '#12239e', '#e66c37', '#6b007b'];
+    const data = {
+            labels: ['C','B','A','AD'],
+            datasets: [{
+                data: [15,45,60,37],
+                backgroundColor: colorHex
+            }]
+    };
+    const config ={
+        type: 'pie',
+        data,
+        plugins: [ChartDataLabels],
+        options: {
+            plugins: {
+                legend: {
+                    position: 'right',
+                    title:{
+                        display: true,
+                        text: "Nota"
+                    }
+                },
+                datalabels: {
+                    color: '#fff',
+                    align: 'center',
+                    formatter: (value, ctx) => {
+                        const datapoints =ctx.chart.data.datasets[0].data;
+                        function totalSum(total, datapoint){
+                            return total+datapoint;
+                        }
+                        const totalvalue = datapoints.reduce(totalSum, 0); 
+                        const porcentajeValue = (value/totalvalue*100).toFixed(2); 
+                        const display = [`${value}`, `${porcentajeValue}%`]
+                        return display;
+                    },
+                },
+            },
+        }
+    };
+    const myChart = new Chart( 
+        document.getElementById('myChart').getContext('2d'), config
+    );
+    document.getElementById("CBtn").addEventListener("click", () => {
+        const {
+            type
+        } = myChart.config;
+        myChart.reset();
+        myChart.toggleDataVisibility(1);
+        myChart.toggleDataVisibility(2);
+        myChart.toggleDataVisibility(3);
+        myChart.update();
+    });
+    document.getElementById("BBtn").addEventListener("click", () => {
+        const {
+            type
+        } = myChart.config;
+        myChart.reset();
+        myChart.toggleDataVisibility(0);
+        myChart.toggleDataVisibility(2);
+        myChart.toggleDataVisibility(3);
+        myChart.update();
+    });
+    document.getElementById("ABtn").addEventListener("click", () => {
+        const {
+            type
+        } = myChart.config;
+        myChart.reset();
+        myChart.toggleDataVisibility(0);
+        myChart.toggleDataVisibility(1);
+        myChart.toggleDataVisibility(3);
+        myChart.update();
+    });
+    document.getElementById("ADBtn").addEventListener("click", () => {
+        const {
+            type
+        } = myChart.config;
+        myChart.reset();
+        myChart.toggleDataVisibility(0);
+        myChart.toggleDataVisibility(1);
+        myChart.toggleDataVisibility(2);
+        myChart.update();
+    });
+</script>
 <script>
     const ctx = document.getElementById('barchart').getContext('2d');
     const chart = new Chart(ctx, {

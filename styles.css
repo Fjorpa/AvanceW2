@@ -22,7 +22,14 @@
     padding: 2.5px;
     padding-left: 5px;
 }
-
+.notasTitle{
+    background-color: rgb(235, 137, 95);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    padding: 2.5px;
+    padding-left: 5px;
+}
 .barGraphTitle{
     background-color: deepskyblue;
     color: white;
