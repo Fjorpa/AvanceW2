@@ -38,12 +38,13 @@ crossorigin="anonymous"></script>
             <div class="card">
                 <h6 class="yearTitle">AÑO</h6>
                     <div class="card-body btnGroup">
-                            <button class="btn btn-outline-dark yearBtn" type="button">2016</button>
-                            <button class="btn btn-outline-dark yearBtn" type="button">2017</button>
-                            <button class="btn btn-outline-dark yearBtn" type="button">2018</button>
-                            <button class="btn btn-outline-dark yearBtn" type="button">2019</button>
-                            <button class="btn btn-outline-dark yearBtn" type="button">2020</button>
-                            <button class="btn btn-outline-dark yearBtn" type="button">2021</button>
+                            <button class="btn btn-outline-dark yearBtn" type="button" id="2016Btn">2016</button>
+                            <button class="btn btn-outline-dark yearBtn" type="button" id="2017Btn">2017</button>
+                            <button class="btn btn-outline-dark yearBtn" type="button" id="2018Btn">2018</button>
+                            <button class="btn btn-outline-dark yearBtn" type="button" id="2019Btn">2019</button>
+                            <button class="btn btn-outline-dark yearBtn" type="button"id="2020Btn">2020</button>
+                            <button class="btn btn-outline-dark yearBtn" type="button"id="2021Btn">2021</button>
+                            <button class="btn btn-outline-dark yearBtn" type="button"id="AllBtn">All</button>
                     </div> 
             </div>
             <div>
@@ -66,7 +67,7 @@ crossorigin="anonymous"></script>
 </body>
 <script>
     const ctx = document.getElementById('barchart').getContext('2d');
-    const myChart = new Chart(ctx, {
+    const chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: [['PRIMER', 'GRADO'],['SEGUNDO', 'GRADO'],['TERCER', 'GRADO'],['CUARTO', 'GRADO'],['QUINTO', 'GRADO'],['SEXTO', 'GRADO'],
@@ -77,6 +78,7 @@ crossorigin="anonymous"></script>
                 backgroundColor: [
                     '#118dff', 
                 ],
+                
             },{
                 label: '2017',
                 data: ['null',10,10,10,10,10,10,'null','null','null','null'],
@@ -115,9 +117,16 @@ crossorigin="anonymous"></script>
         plugins: [ChartDataLabels],
         options: {
             plugins:{
-                legend: {
-                    display: false
+                labels:{
+                    position: 'top',
+                    align: 'left',
+                    title:{
+                        display:true,
+                        text:'HOLA'  
+                    }
+                    
                 },
+                
                 datalabels:{
                     color:'white',
                 }
@@ -130,6 +139,10 @@ crossorigin="anonymous"></script>
                     stacked: true
                 },
                 y: {
+                    title:{
+                        display: true,
+                        text:'CANTIDAD DE ALUMNOS'
+                    },
                     grid: {
                         display: false
                     },
@@ -138,6 +151,104 @@ crossorigin="anonymous"></script>
             }
         },
    
+    });
+    document.getElementById("2016Btn").addEventListener("click", () => {
+
+        const {
+            type
+        } = chart.config;
+        chart.reset();
+        chart.setDatasetVisibility(0, true);
+        chart.setDatasetVisibility(1, false);
+        chart.setDatasetVisibility(2, false);
+        chart.setDatasetVisibility(3, false);
+        chart.setDatasetVisibility(4, false);
+        chart.setDatasetVisibility(5, false);
+        chart.update();
+    });
+    document.getElementById("2017Btn").addEventListener("click", () => {
+
+        const {
+            type
+        } = chart.config;
+        chart.reset();
+        chart.setDatasetVisibility(1, true);
+        chart.setDatasetVisibility(0,  false);
+        chart.setDatasetVisibility(2,  false);
+        chart.setDatasetVisibility(3,  false);
+        chart.setDatasetVisibility(4,  false);
+        chart.setDatasetVisibility(5,  false);
+        chart.update();
+    });
+    document.getElementById("2018Btn").addEventListener("click", () => {
+
+        const {
+            type
+        } = chart.config;
+        chart.reset();
+        chart.setDatasetVisibility(2, true);
+        chart.setDatasetVisibility(0, false);
+        chart.setDatasetVisibility(1, false);
+        chart.setDatasetVisibility(3, false);
+        chart.setDatasetVisibility(4, false);
+        chart.setDatasetVisibility(5, false);
+        chart.update();
+    });
+    document.getElementById("2019Btn").addEventListener("click", () => {
+
+        const {
+            type
+        } = chart.config;
+        chart.reset();
+        chart.setDatasetVisibility(3, true);
+        chart.setDatasetVisibility(0, false);
+        chart.setDatasetVisibility(1, false);
+        chart.setDatasetVisibility(2, false);
+        chart.setDatasetVisibility(4, false);
+        chart.setDatasetVisibility(5, false);
+        chart.update();
+    });
+    document.getElementById("2020Btn").addEventListener("click", () => {
+
+        const {
+            type
+        } = chart.config;
+        chart.reset();
+        chart.setDatasetVisibility(4, true);
+        chart.setDatasetVisibility(0, false);
+        chart.setDatasetVisibility(1, false);
+        chart.setDatasetVisibility(2, false);
+        chart.setDatasetVisibility(3, false);
+        chart.setDatasetVisibility(5, false);
+        chart.update();
+    });
+    document.getElementById("2021Btn").addEventListener("click", () => {
+
+        const {
+            type
+        } = chart.config;
+        chart.reset();
+        chart.setDatasetVisibility(5, true);
+        chart.setDatasetVisibility(0, false);
+        chart.setDatasetVisibility(1, false);
+        chart.setDatasetVisibility(2, false);
+        chart.setDatasetVisibility(3, false);
+        chart.setDatasetVisibility(4, false);
+        chart.update();
+    });
+    document.getElementById("AllBtn").addEventListener("click", () => {
+
+        const {
+            type
+        } = chart.config;
+        chart.reset();
+        chart.setDatasetVisibility(0, true);
+        chart.setDatasetVisibility(1, true);
+        chart.setDatasetVisibility(2, true);
+        chart.setDatasetVisibility(3, true);
+        chart.setDatasetVisibility(4, true);
+        chart.setDatasetVisibility(5, true);
+        chart.update();
     });
     </script>
 </html>

@@ -35,7 +35,7 @@
 .btnGroup{
     margin-top: -17px;
     margin-bottom: -7px;
-   text-align: center;
+   text-align: justify;
 }
 
 .customDivider{
@@ -44,14 +44,15 @@
 
 .noteBtn{
     width: 115px;
-    padding: 50px;
     margin-top: 4px;
+    margin-bottom: 4px;
     margin-left: 1px;
     margin-right: 1px;
 }
 .yearBtn{
     width: 75px;
     margin-top: 4px;
+    margin-bottom: 4px;
     margin-left: 1px;
     margin-right: 1px;
 }
