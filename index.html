@@ -102,6 +102,16 @@ crossorigin="anonymous"></script>
                 </div>
             </div>
         </div>
+        <div class="col-8">
+            <div class="custom">
+                <div class="card">
+                    <h6 class="multibarGraphTitle">CANTIDAD DE NOTAS POR AÑO</h6>
+                    <div class="card-body">
+                      <canvas id="yearNChart" height="100px"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
@@ -402,6 +412,64 @@ crossorigin="anonymous"></script>
                 },{
                     label: 'AD',
                     data: [24,16,8,14,22,16,19,12,13],
+                    backgroundColor: [
+                        '#6b007b'
+                    ]
+                }]
+            },
+            plugins: [ChartDataLabels],
+            options: {
+                scales: {
+                    y: {
+                        title:{
+                            display: true, 
+                            text: 'CANTIDAD DE ALUMNOS'
+                        }
+                    }
+                }, 
+                plugins:{
+                    legend:{
+                        position: 'top',
+                        title:{
+                            display: true,
+                            text: 'Nota'
+                        }
+                    },
+                    datalabels:{
+                        anchor: 'end',
+                        align: 'top'
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        const ctx4 = document.getElementById('yearNChart').getContext('2d');
+        const multibarchartN = new Chart(ctx4, {
+            type: 'bar',
+            data: {
+                labels: ['2016', '2017', '2018', '2019', '2020', '2021'],
+                datasets: [{
+                    label: 'C',
+                    data: [30,34,30,30,35,34],
+                    backgroundColor: [
+                        '#118dff'
+                    ]
+                },{
+                    label: 'B',
+                    data: [417,395,403,411,423,395],
+                    backgroundColor: [
+                        '#12239e'
+                    ]
+                },{
+                    label: 'A',
+                    data: [1022,1082,1070,1084,1060,1114],
+                    backgroundColor: [
+                        '#e66c37'
+                    ]
+                },{
+                    label: 'AD',
+                    data: [171,159,197,185,202,187],
                     backgroundColor: [
                         '#6b007b'
                     ]
